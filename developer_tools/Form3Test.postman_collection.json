@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "b10a783f-3495-448c-bd2b-8520e2633212",
+		"name": "Form3Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2202551"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\n    \"type\": \"accounts\",\n    \"id\": \"a227e265-9605-4b4b-a0e5-3003ea9cc4dc\",\n    \"organisation_id\": \"eb0bd6f5-c3f5-44b2-b677-acd23cdde73c\",\n    \"attributes\": {\n      \"country\": \"GB\",\n      \"base_currency\": \"GBP\",\n      \"bank_id\": \"400300\",\n      \"bank_id_code\": \"GBDSC\",\n      \"bic\": \"NWBKGB22\",\n      \"name\": [\n        \"David 02\"\n      ],\n      \"alternative_names\": [\n        \"David 02\"\n      ],\n      \"account_classification\": \"Personal\",\n      \"joint_account\": false,\n      \"name_matching_status\": \"supported\",\n      \"secondary_identification\": \"A1B2C3D4\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "{{url_accounts}}/accounts",
+					"host": [
+						"{{url_accounts}}"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST All accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_accounts}}/accounts?page=1&page=4",
+					"host": [
+						"{{url_accounts}}"
+					],
+					"path": [
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FETCH",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_accounts}}/accounts/ad27e265-9605-4b4b-a0e5-3003ea9cc4dc",
+					"host": [
+						"{{url_accounts}}"
+					],
+					"path": [
+						"accounts",
+						"ad27e265-9605-4b4b-a0e5-3003ea9cc4dc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
