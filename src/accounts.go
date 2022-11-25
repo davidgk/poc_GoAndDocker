@@ -3,27 +3,35 @@ package src
 import (
 	er "clientForm3Api/src/helpers"
 	"clientForm3Api/src/models"
-	"encoding/json"
-	"io"
-	"net/http"
+	"clientForm3Api/src/service"
 )
 
-const API_ADDRESS = "http://localhost:8080/v1/organisation/accounts"
+var accService = service.AccountApiService{}
 
 func Fetch(accountID string) (*models.AccountData, *er.MyError) {
-	res, err := http.Get(API_ADDRESS + "/" + accountID)
-	body, err := io.ReadAll(res.Body)
-	res.Body.Close()
-	accountData, myError, done := er.ManageApiError(err, res, body)
-	if done {
-		return accountData, myError
+	if validateNotNullParam(accountID) {
+		accountData, myError := accService.GetAccountById(accountID)
+		if myError != nil {
+			return accountData, myError
+		}
+		return accountData, nil
 	}
-	data := parseToAccountData(body)
-	return data, nil
+	myError := &er.MyError{ServerMessage: "Id param should not be null", Code: 500}
+	return nil, myError
 }
 
-func parseToAccountData(body []byte) *models.AccountData {
-	data := new(models.AccountFetchData)
-	json.Unmarshal(body, data)
-	return &data.Data
+func validateNotNullParam(param string) bool {
+	return len(param) > 0
+}
+
+func Create(accountDataJsonString string) (*models.AccountData, *er.MyError) {
+	if validateNotNullParam(accountDataJsonString) {
+		accountData, myError := accService.CreateAccount(accountDataJsonString)
+		if myError != nil {
+			return accountData, myError
+		}
+		return accountData, nil
+	}
+	myError := &er.MyError{ServerMessage: "Param should not be null", Code: 500}
+	return nil, myError
 }
