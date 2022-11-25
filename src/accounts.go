@@ -20,6 +20,18 @@ func Fetch(accountID string) (*models.AccountData, *er.MyError) {
 	return nil, myError
 }
 
+func Delete(accountID string) (string, *er.MyError) {
+	if validateNotNullParam(accountID) {
+		accountDeleteConfirmation, myError := accService.DeleteById(accountID)
+		if myError != nil {
+			return "Fail", myError
+		}
+		return accountDeleteConfirmation, nil
+	}
+	myError := &er.MyError{ServerMessage: "Id param should not be null", Code: 500}
+	return "Fail", myError
+}
+
 func validateNotNullParam(param string) bool {
 	return len(param) > 0
 }

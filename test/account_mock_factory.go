@@ -6,7 +6,7 @@ import (
 	"github.com/google/uuid"
 )
 
-const sunnyAccountJsonForCreate = `{
+const sunnyAccountJsonData = `{
   "data": {
     "type": "accounts",
     "id": "a227e265-9605-4b4b-a0e5-3003ea9cc4dc",
@@ -33,7 +33,7 @@ const sunnyAccountJsonForCreate = `{
 
 func CreateMockAccountDataFromJsonString() models.AccountFetchData {
 	var accData models.AccountFetchData
-	json.Unmarshal([]byte(sunnyAccountJsonForCreate), &accData)
+	json.Unmarshal([]byte(sunnyAccountJsonData), &accData)
 	return accData
 }
 

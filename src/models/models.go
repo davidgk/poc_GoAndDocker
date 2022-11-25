@@ -13,7 +13,8 @@ type AccountData struct {
 	ID             string             `json:"id,omitempty"`
 	OrganisationID string             `json:"organisation_id,omitempty"`
 	Type           string             `json:"type,omitempty"`
-	Version        *int64             `json:"version,omitempty"`
+	// My bad : It was *int64 but I couldn't find a way  to parse it to string, I will appreciate any help
+	Version int `json:"version,omitempty"`
 }
 
 type AccountAttributes struct {

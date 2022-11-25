@@ -2,12 +2,24 @@ package clientForm3Api
 
 import (
 	"fmt"
-	"time"
+	"unsafe"
 )
 
+var a *int64
+
 func main() {
-	for {
-		fmt.Println("Hello World")
-		time.Sleep(time.Second * 3)
-	}
+	a := 5
+	//Convert the integer to a uintptr type
+	ptrVal := uintptr(a)
+	//Convert the uintptr to a Pointer type
+	ptr := unsafe.Pointer(ptrVal)
+
+	//Get the string pointer by address
+	stringPtr := (*string)(ptr)
+
+	//Get the value at that pointer
+	newData := *stringPtr
+
+	//Got it:
+	fmt.Println(newData)
 }
