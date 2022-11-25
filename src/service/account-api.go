@@ -22,7 +22,7 @@ func (a AccountApiService) CreateAccount(accountDataJsonString string) (*models.
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
-	resp, err := client.Do(req)
+	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
 	resp.Body.Close()
 	accountData, myError, done := er.ManageApiError(err, resp, body)

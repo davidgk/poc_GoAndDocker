@@ -21,6 +21,7 @@ func TestCreateAccount(t *testing.T) {
 	// Then
 	require.Equal(t, aAccountFound.ID, id, "the account created has fail")
 	msg += " should be created"
+	src.Delete(aAccountFound.ID)
 	msgs := []string{"when want to Create an Account" + msg}
 	test.PrintTestsMessages(msgs)
 }
@@ -70,6 +71,7 @@ func failScenarioSentSameRequestMoreThanOneTime(t *testing.T) string {
 	require.Equal(t, err.Code, 409, "should throw 409")
 	const errMessage = "Account cannot be created as it violates a duplicate constraint"
 	require.Equal(t, err.ServerMessage, errMessage, "should valid error message about duplicate constraint")
+	src.Delete(account.ID)
 	return " should throw 409 error and fail for duplicated constraint"
 }
 

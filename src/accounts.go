@@ -4,6 +4,7 @@ import (
 	er "clientForm3Api/src/helpers"
 	"clientForm3Api/src/models"
 	"clientForm3Api/src/service"
+	"strings"
 )
 
 var accService = service.AccountApiService{}
@@ -33,7 +34,7 @@ func Delete(accountID string) (string, *er.MyError) {
 }
 
 func validateNotNullParam(param string) bool {
-	return len(param) > 0
+	return len(strings.TrimSpace(param)) > 0
 }
 
 func Create(accountDataJsonString string) (*models.AccountData, *er.MyError) {

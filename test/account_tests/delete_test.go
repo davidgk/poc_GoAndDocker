@@ -16,11 +16,8 @@ func TestDeleteAccount(t *testing.T) {
 	msg := sunnyDeleteByIdTest(t)
 	msgs := []string{"when want to Delete an Account and it exists " + msg}
 
-	//msg = notFoundAccountCheck(t)
-	//msgs = append(msgs, "and it doesn't exist "+msg)
-	//
-	//msg = sendIdNullError(t)
-	//msgs = append(msgs, "and id as param is empty "+msg)
+	msg = deleteByIdSendIdNullError(t)
+	msgs = append(msgs, "and id as param is empty "+msg)
 
 	test.PrintTestsMessages(msgs)
 }
@@ -38,5 +35,14 @@ func sunnyDeleteByIdTest(t *testing.T) string {
 	require.Equal(t, err.Code, 404, "the account was not found ")
 	require.Equal(t, err.ServerMessage, "record "+aAccountCreated.ID+" does not exist", "the account was not found ")
 	msg += " should be found"
+	return msg
+}
+
+func deleteByIdSendIdNullError(t *testing.T) string {
+	id := ""
+	_, err := src.Delete(id)
+	require.Equal(t, err.Code, 500, "error should be 500 ")
+	require.Equal(t, err.ServerMessage, "Id param should not be null", "should valid error message about attributes")
+	msg := " should throw 500 error"
 	return msg
 }

@@ -52,5 +52,6 @@ func sunnyGetByIdTest(t *testing.T) string {
 	aAccountFound, _ := src.Fetch(aAccountCreated.ID)
 	require.Equal(t, aAccountFound.ID, aAccountCreated.ID, "the account created not contain the same ID ")
 	msg += " should be found"
+	src.Delete(aAccountCreated.ID)
 	return msg
 }
