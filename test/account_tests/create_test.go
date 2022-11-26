@@ -17,7 +17,10 @@ func TestCreateAccount(t *testing.T) {
 	accountDataSunny, id := amf.CreateDataToCreateAccount()
 	data, _ := json.Marshal(accountDataSunny)
 	// When
-	aAccountFound, _ := src.Create(string(data))
+	aAccountFound, error := src.Create(string(data))
+	if error != nil {
+		panic(error.Error.Error())
+	}
 	// Then
 	require.Equal(t, aAccountFound.ID, id, "the account created has fail")
 	msg += " should be created"
