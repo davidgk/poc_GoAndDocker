@@ -10,6 +10,8 @@ import (
 
 type AccountApiService struct{}
 
+// I investigate and I'd use this value from environment variables,
+// but I think godotenv in not part of std library , right ?
 const ApiAddress = "http://localhost:8080/v1/organisation/accounts"
 const AccountDeleteConfirmation = "Account Deleted"
 

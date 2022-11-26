@@ -16,7 +16,7 @@ func ExecuteAPI(httpType string, url string, buffer io.Reader) ([]byte, *MyError
 	client := &http.Client{}
 	res, err2 := client.Do(req)
 	if err2 != nil {
-		myError := MyError{Code: 500, Error: err2, ServerMessage: "Something fails when resolve the request:" + err1.Error()}
+		myError := MyError{Code: 500, Error: err2, ServerMessage: "Something fails when resolve the request:" + err2.Error()}
 		return nil, &myError
 	}
 	body, err := ioutil.ReadAll(res.Body)
