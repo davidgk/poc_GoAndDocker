@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"clientForm3Api/src/models"
 	"encoding/json"
 	"net/http"
 )
@@ -12,12 +11,12 @@ type MyError struct {
 	ServerMessage string
 }
 
-func ManageApiError(err error, res *http.Response, body []byte) (*models.AccountData, *MyError, bool) {
+func ManageApiError(err error, res *http.Response, body []byte) *MyError {
 	if err != nil || res.StatusCode > 299 {
 		myError := buildMyError(err, res, body)
-		return nil, myError, true
+		return myError
 	}
-	return nil, nil, false
+	return nil
 }
 
 func buildMyError(err error, res *http.Response, body []byte) *MyError {
