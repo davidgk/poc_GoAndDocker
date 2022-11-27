@@ -37,3 +37,8 @@ Considerations
 but I couldn't make it run ok through docker compose, I mean , they run but there is a memory 
 issue that I can't solve. I think pairing with some who can explain me the error 
 would help a lot.
+
+## Test runing by console:
+![image](https://user-images.githubusercontent.com/1593856/204144212-68d48ce6-8653-4492-8987-b483b94b7e84.png)
+
+
