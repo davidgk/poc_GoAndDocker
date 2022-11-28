@@ -44,4 +44,6 @@ ACCOUNTAPI_ADDR
 ## Test runing by console:
 ![image](https://user-images.githubusercontent.com/1593856/204144212-68d48ce6-8653-4492-8987-b483b94b7e84.png)
 
+## Test runing with docker console:
+![image](https://user-images.githubusercontent.com/1593856/204279426-ef4de62d-c5b7-4823-93dd-cfdc478ffcf9.png)
 
