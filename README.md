@@ -37,9 +37,12 @@ Considerations
 Change the environment variable :
 ACCOUNTAPI_ADDR=http://localhost:8080
 
-* Get the Ip Container
-Check inside de container with if config and change the IP within env variable 
-ACCOUNTAPI_ADDR 
+* How to test against docker
+* start account api
+* Check inside de container with ifconfig to get the Ip container
+* Change the IP within env variable for account-lib ACCOUNTAPI_ADDR 
+
+ACCOUNTAPI_ADDR=http://<IP Found>:8080
 
 ## Test runing by console:
 ![image](https://user-images.githubusercontent.com/1593856/204144212-68d48ce6-8653-4492-8987-b483b94b7e84.png)
