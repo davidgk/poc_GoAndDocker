@@ -5,6 +5,7 @@ import (
 	"clientForm3Api/src/helpers"
 	"clientForm3Api/src/models"
 	"encoding/json"
+	"os"
 	"strconv"
 )
 
@@ -12,7 +13,8 @@ type AccountApiService struct{}
 
 // I investigate and I'd use this value from environment variables,
 // but I think godotenv in not part of std library , right ?
-const ApiAddress = "http://localhost:8080/v1/organisation/accounts"
+var ApiAddress = os.Getenv("ACCOUNTAPI_ADDR") + "/v1/organisation/accounts"
+
 const AccountDeleteConfirmation = "Account Deleted"
 
 func (a AccountApiService) CreateAccount(accountDataJsonString string) (*models.AccountData, *helpers.MyError) {

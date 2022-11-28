@@ -33,10 +33,13 @@ Steps of developing
 
  
 Considerations
-* Test are running locally and running against console
-but I couldn't make it run ok through docker compose, I mean , they run but there is a memory 
-issue that I can't solve. I think pairing with some who can explain me the error 
-would help a lot.
+* How to run Test locally and running against console // check account api with postman
+Change the environment variable :
+ACCOUNTAPI_ADDR=http://localhost:8080
+
+* Get the Ip Container
+Check inside de container with if config and change the IP within env variable 
+ACCOUNTAPI_ADDR 
 
 ## Test runing by console:
 ![image](https://user-images.githubusercontent.com/1593856/204144212-68d48ce6-8653-4492-8987-b483b94b7e84.png)
